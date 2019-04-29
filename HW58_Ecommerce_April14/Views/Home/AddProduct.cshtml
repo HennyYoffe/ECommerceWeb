@@ -1,0 +1,30 @@
+﻿@using HW58_Ecommerce_April14
+@using ClassLibrary1
+@model IEnumerable<Category>
+@{
+    ViewData["Title"] = "AddProduct";
+}
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3 well">
+        <form method="post" action="/home/addProduct" enctype="multipart/form-data">
+            <input type="file" name="file" />
+            <br />
+            <input type="text" class="form-control" placeholder="Name" name="name" />
+            <input type="text" class="form-control" placeholder="Brief Description" name="description" />
+            <input type="text" class="form-control" placeholder="Amount" name="amount" />
+            <select name="cid" id="categoryId" class="form-control ">
+                @foreach (Category c in Model)
+                {
+                    <option value="@c.Id">@c.Name</option>
+                }
+            </select>
+            <input type="text" class="form-control" placeholder="New Category" name="category" />
+
+
+
+            <button class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+

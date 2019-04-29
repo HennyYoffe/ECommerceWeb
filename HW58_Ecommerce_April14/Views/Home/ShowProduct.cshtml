@@ -1,0 +1,55 @@
+﻿@using HW58_Ecommerce_April14
+@using ClassLibrary1
+@model Product
+@{
+    ViewData["Title"] = "ShowProduct";
+}
+
+<div class="col-md-9">
+
+    <div class="thumbnail">
+        <img class="img-responsive" src="/UploadedFiles/@Model.FileName" alt="" height='300' width='450'>
+        <div class="caption-full">
+            <h4 class="pull-right">@Model.Amount</h4>
+            <h4>
+                @Model.Name
+            </h4>
+            <p>@Model.Description</p>
+        </div>
+    </div>
+    <select id="quantity" class="pull-left" color="green">
+        <option value="1">1 </option>
+        <option value="2">2 </option>
+        <option value="3">3 </option>
+        <option value="4">4 </option>
+        <option value="5">5 </option>
+        <option value="6">6 </option>
+        <option value="7">7 </option>
+        <option value="8">8 </option>
+        <option value="9">9 </option>
+        <option value="10">10 </option>
+    </select>
+    <button class="btn btn-success center-block addtocart" data-id="@Model.Id">Add To Cart</button>
+</div>
+
+<div class="modal" tabindex="-1" role="dialog" id="additem" style="margin-top: 40px;">
+    <div class="modal-dialog well" role="document">
+        <div class="modal-content">
+            <h4 class="modal-title">Where do you want to go now?</h4>
+        </div>
+            <br />
+            <div class="modal-body">
+                <div class="row">
+                    <a href="/home/index" class="pull-left shop btn btn-success">Keep Shopping</a>
+                    <a class="pull-right cart btn btn-success" href="/home/showcart">View Cart</a>
+                </div>
+          
+        </div>
+    </div>
+</div>
+
+
+
+@section scripts {
+    <script src="~/js/ShowProduct.js"></script>
+}

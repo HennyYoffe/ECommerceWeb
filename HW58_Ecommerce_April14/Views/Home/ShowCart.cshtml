@@ -1,0 +1,62 @@
+﻿@using HW58_Ecommerce_April14
+@using ClassLibrary1
+@model List<ShoppingCartViewModel>
+@{
+    ViewData["Title"] = "ShowCart";
+}
+
+<div class="container">
+
+    <div class="row" style="margin-top: 60px; margin-left: 60px;">
+        @foreach (ShoppingCartViewModel vm in Model)
+        {
+            <div class="row product ">
+                <div class="col-sm-4 col-lg-4 col-md-4">
+
+                    <div class="thumbnail">
+                        <img src="/UploadedFiles/@vm.Product.FileName" alt="">
+                        <div class="caption">
+                            <h4 class="pull-right">@vm.Product.Amount </h4>
+                            <h4>Quantity: @vm.ShoppingCart.Quantity</h4>
+                            <h3>Total: @vm.Total</h3>
+                            
+                            <button class="pull-left shop btn btn-success quantity" data-scid="@vm.ShoppingCart.ShoppingCartId" data-pid=" @vm.ShoppingCart.ProductId" data-quantity="@vm.ShoppingCart.Quantity">
+                                Change Quantity
+                            </button>
+                            <a class="pull-right cart btn btn-danger" href="/home/deleteitem?scid=@vm.ShoppingCart.ShoppingCartId&pid=@vm.ShoppingCart.ProductId">
+                                Delete
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+        }
+
+    </div>
+</div>
+<div class="modal " id="edititem" tabindex="-1" role="dialog"  style="margin-top: 40px;">
+    <div class="modal-dialog well" role="document">
+        <div class="modal-content">
+            <form action="/home/editquantity" method="post">
+                <h4 class="modal-title">Change Quantity</h4>     
+
+        <br />
+        <div class="modal-body">
+            <div class="row">
+                <input type="hidden" name="scid" id="scid" />
+                <input type="hidden" name="pid" id="pid"/>
+                <input type="text" name="quantity" id="quantity" />
+                <button class="btn btn-group">Update</button>
+            </div>
+        </div>
+            </form>
+            
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script src="~/js/ShowCart.js"></script>
+}
+
+
