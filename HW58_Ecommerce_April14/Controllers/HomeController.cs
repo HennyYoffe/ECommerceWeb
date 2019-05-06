@@ -130,7 +130,7 @@ namespace HW58_Ecommerce_April14.Controllers
         public IActionResult EditQuantity (int scid, int pid,int quantity)
         {
             ECommerceManager mgr = new ECommerceManager(_connectionString);
-
+            mgr.UpdateItemInShoppingCart(scid, pid, quantity);
             return Redirect("/home/showcart");
         }
         public IActionResult DeleteItem(int scid, int pid)
